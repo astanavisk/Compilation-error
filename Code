@@ -1,0 +1,19 @@
+#include <Joystick.h>
+
+int val;
+
+const int analogIn = A0;
+const int minPot = 235;
+const int maxPot = 360;
+
+void setup() {
+  Joystick.begin();
+}
+
+void loop() {
+
+  val = analogRead(analogIn);
+  val = map(val, minPot, maxPot, 0, 255);
+  val = constrain(val, 0, 255);
+  Joystick.setThrottle(val);
+}
